@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>JSONPlaceholder</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<h1>Consumo API REST</h1>
+
+<hr>
+
+<h2>Buscar por ID</h2>
+
+<input id="postId" type="number">
+<button id="buscar">Buscar</button>
+
+<hr>
+
+<h2>Filtrar por usuario</h2>
+
+<input id="userId" type="number">
+<button id="filtrar">Filtrar</button>
+
+<hr>
+
+<h2>Nueva publicación</h2>
+
+<input id="titulo" placeholder="Título">
+
+<textarea id="contenido"></textarea>
+
+<button id="crear">
+Crear
+</button>
+
+<hr>
+
+<h2>Actualizar título</h2>
+
+<input id="patchId" type="number">
+
+<input id="nuevoTitulo">
+
+<button id="actualizar">
+
+Actualizar
+
+</button>
+
+<hr>
+
+<h2>Eliminar</h2>
+
+<input id="deleteId" type="number">
+
+<button id="eliminar">
+
+Eliminar
+
+</button>
+
+<hr>
+
+<button id="listar">
+Mostrar todas las publicaciones
+</button>
+
+<div id="resultado"></div>
+
+<script type="module" src="app.js"></script>
+
+</body>
+</html>
