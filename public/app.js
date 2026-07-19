@@ -4,20 +4,13 @@ function mostrar(posts) {
     resultado.innerHTML = "";
     posts.forEach(post => {
         resultado.innerHTML += `
-
-<div class="post">
-
-<h3>${post.title}</h3>
-
-<p>${post.body}</p>
-
-<b>ID:</b> ${post.id}<br>
-
-<b>Usuario:</b> ${post.userId}
-
-</div>
-
-`;
+      <div class="post">
+        <h3>${post.title}</h3>
+        <p>${post.body}</p>
+        <b>ID:</b> ${post.id}<br>
+        <b>Usuario:</b> ${post.userId}
+      </div>
+    `;
     });
 }
 document.getElementById("listar").addEventListener("click", async () => {
@@ -26,7 +19,7 @@ document.getElementById("listar").addEventListener("click", async () => {
         mostrar(datos);
     }
     catch {
-        alert("Error");
+        alert("Error al obtener las publicaciones.");
     }
 });
 document.getElementById("buscar").addEventListener("click", async () => {
@@ -36,29 +29,53 @@ document.getElementById("buscar").addEventListener("click", async () => {
         mostrar([dato]);
     }
     catch {
-        alert("No encontrado");
+        alert("Publicación no encontrada.");
     }
 });
 document.getElementById("filtrar").addEventListener("click", async () => {
     const id = Number(document.getElementById("userId").value);
-    const datos = await api.filtrarUsuario(id);
-    mostrar(datos);
+    try {
+        const datos = await api.filtrarUsuario(id);
+        mostrar(datos);
+    }
+    catch {
+        alert("Error al filtrar las publicaciones por usuario.");
+    }
 });
 document.getElementById("crear").addEventListener("click", async () => {
     const titulo = document.getElementById("titulo").value;
     const contenido = document.getElementById("contenido").value;
-    const dato = await api.crearPost(titulo, contenido);
-    alert("Creado con ID " + dato.id);
+    try {
+        const dato = await api.crearPost(titulo, contenido);
+        alert("Creado con ID " + dato.id);
+    }
+    catch {
+        alert("Error al crear la publicación.");
+    }
 });
 document.getElementById("actualizar").addEventListener("click", async () => {
     const id = Number(document.getElementById("patchId").value);
     const titulo = document.getElementById("nuevoTitulo").value;
-    const dato = await api.actualizarTitulo(id, titulo);
-    alert("Nuevo título: " + dato.title);
+    try {
+        const dato = await api.actualizarTitulo(id, titulo);
+        alert("Nuevo título: " + dato.title);
+    }
+    catch {
+        alert("Error al actualizar el título.");
+    }
 });
 document.getElementById("eliminar").addEventListener("click", async () => {
     const id = Number(document.getElementById("deleteId").value);
-    const eliminado = await api.eliminar(id);
-    if (eliminado)
-        alert("Eliminado correctamente");
+    try {
+        const eliminado = await api.eliminar(id);
+        if (eliminado) {
+            alert("Eliminado correctamente");
+        }
+        else {
+            alert("No se pudo eliminar la publicación.");
+        }
+    }
+    catch {
+        alert("Error en la conexión al intentar eliminar.");
+    }
 });

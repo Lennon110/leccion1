@@ -112,11 +112,12 @@ docker run -p 8080:8080 lennon210/leccion1:latest
 
 ## Métodos HTTP utilizados
 
-Se utilizó el método **GET** para consultar información de la API, obteniendo todas las publicaciones, buscando una publicación por su identificador y filtrando publicaciones por usuario.
+- **GET**: Utilizado para solicitar y recuperar datos del servidor. En este proyecto se usó para listar todas las publicaciones, buscar una específica por su ID y filtrar el contenido por identificador de usuario (`userId`).
+- **POST**: Utilizado para enviar datos al servidor con el fin de crear un nuevo recurso. Se implementó para añadir una nueva publicación enviando un cuerpo en formato JSON.
+- **PATCH**: Utilizado para realizar modificaciones parciales a un recurso existente. Se utilizó para actualizar de manera aislada únicamente el título de una publicación específica.
+- **DELETE**: Utilizado para eliminar un recurso específico del servidor. Se empleó para simular el borrado de una publicación mediante su ID.
 
-El método **POST** permitió crear una nueva publicación enviando datos en formato JSON. El método **PATCH** se utilizó para actualizar únicamente el título de una publicación, mientras que **DELETE** simuló la eliminación de una publicación.
-
-Como se trabajó con **JSONPlaceholder**, las operaciones **POST**, **PATCH** y **DELETE** son simuladas y los cambios no se almacenan permanentemente en el servidor.
+*Nota: Al interactuar con JSONPlaceholder, las operaciones POST, PATCH y DELETE son simulaciones lógicas directas en el cliente; los cambios no persisten de manera permanente en el servidor externo.*
 
 ---
 
